@@ -1,5 +1,24 @@
 class MyComponent extends React.Component {
-  render() {
+  // getInitialState() {
+  //   return { e: false };
+  // }
+
+  constructor(props) {
+    super(props);
+    this.state = { e: false };
+  }
+
+  edit() {
+    this.setState({ e: true });
+  }
+
+  save() {
+    this.setState({ e: false });
+  }
+
+  remove() {}
+
+  renderDisplay() {
     return (
       <div className="note">
         <p>
@@ -7,22 +26,32 @@ class MyComponent extends React.Component {
         </p>
         <span>
           <button
-            onClick={this.edit}
+            onClick={this.edit.bind(this)}
             className="btn btn-primary glyphicon glyphicon-pencil"
           />
           <button
-            onClick={this.remove}
+            onClick={this.remove.bind(this)}
             className="btn btn-danger glyphicon glyphicon-trash"
           />
         </span>
       </div>
     );
   }
-  edit() {
-    alert("editing");
+
+  renderForm() {
+    return (
+      <div className="note">
+        <textarea defaultValue={this.props.children} className="form-control" />
+        <button
+          onClick={this.save.bind(this)}
+          className="btn btn-success btn-sm glyphicon glyphicon-floppy-disk"
+        />
+      </div>
+    );
   }
-  remove() {
-    alert("removing");
+
+  render() {
+    return this.state.e ? this.renderForm() : this.renderDisplay();
   }
 }
 
