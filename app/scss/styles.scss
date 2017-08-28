@@ -13,62 +13,63 @@ body {
   padding: 0;
 }
 
-div.board {
-  background-color: brown;
-  width: 100%;
-  background: #eab92d;
-  filter: progid:DXImageTransform.Microsoft.gradient(
-      startColorstr='#eab92d',
-      endColorstr='#c79810',
-      GradientType=1
-    );
-}
+div {
+  &.note > textarea {
+    height: 75%;
+    background: rgba(255, 255, 255, .5);
+  }
 
-div.note {
-  height: 150px;
-  width: 150px;
-  background-color: yellow;
-  margin: 2px 0;
-  position: relative;
-  cursor: -webkit-grab;
-  -webkit-box-shadow: 5px 5px 15px 0 rgba(0, 0, 0, .2);
-  box-shadow: 5px 5px 15px 0 rgba(0, 0, 0, .2);
-  overflow: hidden;
-}
+  &.board {
+    background-color: brown;
+    width: 100%;
+    background: #eab92d;
+    filter: progid:DXImageTransform.Microsoft.gradient(
+        startColorstr='#eab92d',
+        endColorstr='#c79810',
+        GradientType=1
+      );
+  }
 
-div.note:active {
-  cursor: -webkit-grabbing;
-}
+  &.note {
+    height: 150px;
+    width: 150px;
+    background-color: yellow;
+    margin: 2px 0;
+    position: relative;
+    cursor: -webkit-grab;
+    -webkit-box-shadow: 5px 5px 15px 0 rgba(0, 0, 0, .2);
+    box-shadow: 5px 5px 15px 0 rgba(0, 0, 0, .2);
+    overflow: hidden;
+  }
 
-div.note p {
-  font-size: 22px;
-  padding: 5px;
-  font-family: "Shadows Into Light", Arial;
-}
+  &.note:active {
+    cursor: -webkit-grabbing;
+  }
 
-div.note:hover > span {
-  opacity: 1;
-}
+  &.note p {
+    font-size: 22px;
+    padding: 5px;
+    font-family: "Shadows Into Light", Arial;
+  }
 
-div.note > span {
-  position: absolute;
-  bottom: 2px;
-  right: 2px;
-  opacity: 0;
-  transition: opacity .25s linear;
-}
+  &.note:hover > span {
+    opacity: 1;
+  }
 
-div.note {
-  button {
-    margin: 2px;
+  &.note > span {
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    opacity: 0;
+    transition: opacity .25s linear;
+  }
+
+  &.note {
+    button {
+      margin: 2px;
+    }
   }
 }
-
-div.note > textarea {
-  height: 75%;
-  background: rgba(255, 255, 255, .5);
-}
-
 .glyphicon-plus {
   position: fixed;
   top: 10px;
