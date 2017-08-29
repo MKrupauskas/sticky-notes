@@ -1,8 +1,4 @@
 class MyComponent extends React.Component {
-  // getInitialState() {
-  //   return { e: false };
-  // }
-
   constructor(props) {
     super(props);
     this.state = { e: false };
@@ -61,23 +57,3 @@ ReactDOM.render(
   </MyComponent>,
   document.getElementById("root")
 );
-
-/*
-function tick() {
-  const a = (
-    <div>
-      <h1 className="btn btn-primary">
-        Hello, world! This is a cool react thingy{" "}
-        <i className="glyphicon glyphicon-trash" />
-      </h1>      <p>
-        {new Date().toLocaleTimeString()}
-      </p>
-    </div>
-  );
-
-  ReactDOM.render(a, document.getElementById("root"));
-}
-
-tick();
-setInterval(tick, 1000);
-*/
