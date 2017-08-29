@@ -1,15 +1,15 @@
-class MyComponent extends React.Component {
+class Note extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { e: false };
+    this.state = { editing: false };
   }
 
   edit = () => {
-    this.setState({ e: true });
+    this.setState({ editing: true });
   }
 
   save = () => {
-    this.setState({ e: false });
+    this.setState({ editing: false });
   }
 
   remove = () => {}
@@ -47,13 +47,13 @@ class MyComponent extends React.Component {
   }
 
   render() {
-    return this.state.e ? this.renderForm() : this.renderDisplay();
+    return this.state.editing ? this.renderForm() : this.renderDisplay();
   }
 }
 
 ReactDOM.render(
-  <MyComponent>
+  <Note>
     Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
-  </MyComponent>,
+  </Note>,
   document.getElementById("root")
 );
