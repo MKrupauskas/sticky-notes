@@ -6,13 +6,14 @@ class Note extends React.Component {
 
   edit = () => {
     this.setState({ editing: true });
-  }
+  };
 
   save = () => {
+    var val = this.refs.newText.getDOMNode().value;
     this.setState({ editing: false });
-  }
+  };
 
-  remove = () => {}
+  remove = () => {};
 
   renderDisplay() {
     return (
@@ -22,7 +23,7 @@ class Note extends React.Component {
         </p>
         <span>
           <button
-            onClick={this.edit)}
+            onClick={this.edit}
             className="btn btn-primary glyphicon glyphicon-pencil"
           />
           <button
@@ -37,7 +38,11 @@ class Note extends React.Component {
   renderForm() {
     return (
       <div className="note">
-        <textarea defaultValue={this.props.children} className="form-control" />
+        <textarea
+          ref="newText"
+          defaultValue={this.props.children}
+          className="form-control"
+        />
         <button
           onClick={this.save}
           className="btn btn-success btn-sm glyphicon glyphicon-floppy-disk"
@@ -48,6 +53,22 @@ class Note extends React.Component {
 
   render() {
     return this.state.editing ? this.renderForm() : this.renderDisplay();
+  }
+}
+
+class Board extends React.Component() {
+  propTypes: {
+    count: function(props, propName) {
+      if (typeof props[propName] !== "number") {
+        return new Error('The count property must be a number');
+      }
+      if (props[propName] > 100) {
+        return new Error('creating ' + props[propName] + ' note is ridicoulus')
+      }
+    }
+  }
+  render() {
+    return <div className="Board">{props.propName}</div>;
   }
 }
 

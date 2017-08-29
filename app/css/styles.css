@@ -10,6 +10,10 @@ body {
   margin: 0;
   padding: 0; }
 
+div.note > textarea {
+  height: 75%;
+  background: rgba(255, 255, 255, 0.5); }
+
 div.board {
   background-color: brown;
   width: 100%;
@@ -23,7 +27,6 @@ div.note {
   margin: 2px 0;
   position: relative;
   cursor: -webkit-grab;
-  -webkit-box-shadow: 5px 5px 15px 0 rgba(0, 0, 0, 0.2);
   box-shadow: 5px 5px 15px 0 rgba(0, 0, 0, 0.2);
   overflow: hidden; }
 
@@ -47,10 +50,6 @@ div.note > span {
 
 div.note button {
   margin: 2px; }
-
-div.note > textarea {
-  height: 75%;
-  background: rgba(255, 255, 255, 0.5); }
 
 .glyphicon-plus {
   position: fixed;
