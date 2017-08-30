@@ -1,8 +1,7 @@
 @import url(http://fonts.googleapis.com/css?family=Shadows+Into+Light);
-body,
 html,
 div.board,
-div#react-container {
+div#root {
   height: 100%;
   overflow: hidden; }
 
@@ -15,10 +14,9 @@ div.note > textarea {
   background: rgba(255, 255, 255, 0.5); }
 
 div.board {
-  background-color: brown;
   width: 100%;
-  background: #eab92d;
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eab92d', endColorstr='#c79810', GradientType=1 ); }
+  background-color: #eab92d;
+  background: linear-gradient(to bottom right, #eab92d, #c79810); }
 
 div.note {
   height: 150px;
@@ -26,12 +24,12 @@ div.note {
   background-color: yellow;
   margin: 2px 0;
   position: relative;
-  cursor: -webkit-grab;
+  cursor: grab;
   box-shadow: 5px 5px 15px 0 rgba(0, 0, 0, 0.2);
   overflow: hidden; }
 
 div.note:active {
-  cursor: -webkit-grabbing; }
+  cursor: grabbing; }
 
 div.note p {
   font-size: 22px;

@@ -13,6 +13,8 @@ var imagemin = require("gulp-imagemin");
 var cache = require("gulp-cache");
 var del = require("del");
 var runSequence = require("run-sequence");
+var webpack = require("webpack-stream");
+var webpack2 = require("webpack");
 
 /**
  * Watchers
@@ -72,6 +74,13 @@ gulp.task("build", function(callback) {
   runSequence("clean:dist", ["sass", "useref", "images"], callback);
 });
 
+gulp.task("webpack", function() {
+  return gulp
+    .src("app/js/main.js")
+    .pipe(webpack())
+    .pipe(gulp.dest("dist/"));
+});
+
 gulp.task("default", function(callback) {
-  runSequence(["sass", "browserSync", "watch"], callback);
+  runSequence(["sass", "webpack", "browserSync", "watch"], callback);
 });
