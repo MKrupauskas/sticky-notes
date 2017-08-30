@@ -1,9 +1,14 @@
 @import url(http://fonts.googleapis.com/css?family=Shadows+Into+Light);
+@import 'vars';
+@import 'base';
+@import 'board';
+@import 'note';
 
-body,
+$font-stack: "Shadows Into Light", Arial;
+
 html,
 div.board,
-div#react-container {
+div#root {
   height: 100%;
   overflow: hidden;
 }
@@ -11,6 +16,7 @@ div#react-container {
 body {
   margin: 0;
   padding: 0;
+  @extend #root;
 }
 
 div {
@@ -20,14 +26,9 @@ div {
   }
 
   &.board {
-    background-color: brown;
     width: 100%;
-    background: #eab92d;
-    filter: progid:DXImageTransform.Microsoft.gradient(
-        startColorstr='#eab92d',
-        endColorstr='#c79810',
-        GradientType=1
-      );
+    background-color: #eab92d;
+    background: linear-gradient(to bottom right, #eab92d, #c79810);
   }
 
   &.note {
@@ -36,19 +37,19 @@ div {
     background-color: yellow;
     margin: 2px 0;
     position: relative;
-    cursor: -webkit-grab;
+    cursor: grab;
     box-shadow: 5px 5px 15px 0 rgba(0, 0, 0, .2);
     overflow: hidden;
   }
 
   &.note:active {
-    cursor: -webkit-grabbing;
+    cursor: grabbing;
   }
 
   &.note p {
     font-size: 22px;
     padding: 5px;
-    font-family: "Shadows Into Light", Arial;
+    font-family: $font-stack;
   }
 
   &.note:hover > span {
