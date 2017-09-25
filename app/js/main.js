@@ -31,8 +31,7 @@ class Board extends React.Component() {
   render() {
     return (
       <div className="board">
-        {this.getInitialState.note.map(
-          this.eachNote.bind(this)}
+        {this.getInitialState.note.map(this.eachNote.bind(this))}
       </div>
     );
   }

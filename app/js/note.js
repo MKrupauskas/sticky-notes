@@ -9,7 +9,8 @@ export default class Note extends React.Component {
   }
 
   save() {
-    var val = this.refs.newText.getDOMNode().value;
+    var value = this.refs.newText.getDOMNode().value;
+    alert("save note value " + value);
     this.setState({ editing: false });
   }
 
@@ -18,9 +19,7 @@ export default class Note extends React.Component {
   renderDisplay() {
     return (
       <div className="note">
-        <p>
-          {this.props.children}
-        </p>
+        <p>{this.props.children}</p>
         <span>
           <button
             onClick={this.edit.bind(this)}
