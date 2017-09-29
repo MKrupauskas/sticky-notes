@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack-dev-server --env.dev",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
@@ -26,10 +28,13 @@
     "gulp-uglify": "^3.0.0",
     "gulp-useref": "^3.1.2",
     "run-sequence": "^2.1.0",
-    "webpack": "^3.5.5",
+    "webpack": "^3.6.0",
+    "webpack-dev-server": "^2.9.1",
     "webpack-stream": "^4.0.0"
   },
   "dependencies": {
-    "gulp-cssnano": "^2.1.2"
+    "gulp-cssnano": "^2.1.2",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0"
   }
 }
