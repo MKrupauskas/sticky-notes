@@ -1,6 +1,8 @@
-import Note from "note.js";
+import React, { Component } from "react";
+import ReactDOM from "react-dom";
+import Note from "./note.js";
 
-class Board extends React.Component() {
+class Board extends Component {
   getInitialState() {
     return {
       notes: ["Call Bill", "Email Lisa", "Finish Project"]
