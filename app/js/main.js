@@ -3,22 +3,22 @@ import ReactDOM from "react-dom";
 import Note from "./note.js";
 
 class Board extends Component {
-  getInitialState() {
+  getNotes() {
     return {
       notes: ["Call Bill", "Email Lisa", "Finish Project"]
     };
   }
   update(newText, i) {
-    var array = this.getInitialState.notes;
+    var array = this.getNotes.notes;
     arr[i] = newText;
     this.setState({ notes: array });
   }
   remove() {
-    var array = this.getInitialState.notes;
+    var array = this.getNotes.notes;
     array.splice(i, 1);
     this.setState({ notes: array });
   }
-  eachNote(note, i) {
+  eachNote = (note, i) => {
     return (
       <Note
         key={i}
@@ -29,11 +29,11 @@ class Board extends Component {
         {note}
       </Note>
     );
-  }
+  };
   render() {
     return (
       <div className="board">
-        {this.getInitialState.note.map(this.eachNote.bind(this))}
+        {this.getNotes.note.map(this.eachNote.bind(this))}
       </div>
     );
   }
