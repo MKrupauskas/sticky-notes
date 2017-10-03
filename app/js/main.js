@@ -31,8 +31,12 @@ class Board extends Component {
     );
   };
   render() {
-    return <div className="board">{this.getNotes.note}</div>;
+    return (
+      <div className="board">
+        {this.getNotes.note.map(this.eachNote.bind(this))}
+      </div>
+    );
   }
 }
 
-ReactDOM.render(<Board />, document.getElementById("root"));
+ReactDOM.render(<Note>Ahahah</Note>, document.getElementById("root"));
