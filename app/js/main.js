@@ -31,7 +31,7 @@ class Board extends Component {
     );
   };
   render() {
-    return <div className="board">{this.getNotes}</div>;
+    return <div className="board">{this.getNotes()}</div>;
   }
 }
 
