@@ -60,6 +60,7 @@ class Note extends Component {
 
 class Board extends Component {
   constructor(props) {
+    super(props);
     this.state = {
       notes: ["Call Bill", "Email Lisa", "Finish Project"]
     };
