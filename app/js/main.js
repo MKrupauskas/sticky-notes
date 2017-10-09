@@ -2,6 +2,18 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 
 class Note extends Component {
+  componentWillMount() {
+    this.style = {
+      right: `${this.randomBetween(0, window.innerWidth - 150)} px`,
+      top: `${this.randomBetween(0, window.innerHeight - 150)} px`,
+      transform: `rotate(${this.randomBetween(-15, 15)}deg)`
+    };
+  }
+
+  randomBetween(min, max) {
+    return min + Math.ceil(Math.random() * max);
+  }
+
   constructor(props) {
     super(props);
     this.state = { editing: false };
@@ -12,8 +24,8 @@ class Note extends Component {
   };
 
   save = () => {
-    var value = this.refs.newText.getDOMNode().value;
-    alert("save note value " + value);
+    // var value = this.refs.newText.getDOMNode().value;
+    // alert("save note value " + value);
     this.setState({ editing: false });
   };
 
@@ -21,7 +33,7 @@ class Note extends Component {
 
   renderDisplay() {
     return (
-      <div className="note">
+      <div className="note" style={this.style}>
         <p>{this.props.children}</p>
         <span>
           <button
@@ -39,7 +51,7 @@ class Note extends Component {
 
   renderForm() {
     return (
-      <div className="note">
+      <div className="note" style={this.style}>
         <textarea
           ref="newText"
           defaultValue={this.props.children}
@@ -65,20 +77,37 @@ class Board extends Component {
       notes: ["Call Bill", "Email Lisa", "Finish Project"]
     };
   }
+  nextId() {
+    this.uniqueId = this.uniqueId || 0;
+    return this.uniqueId++;
+  }
+  add() {
+    let array = this.state.notes;
+    array.push({
+      id: this.nextId(),
+      note: text
+    });
+    this.setState({ notes: array });
+  }
   update = (newText, i) => {
-    var array = this.state.notes;
-    array[i] = newText;
+    let array = this.state.notes;
+    array[i].note = newText;
     this.setState({ notes: array });
   };
   remove = () => {
-    var array = this.state.notes;
+    let array = this.state.notes;
     array.splice(i, 1);
     this.setState({ notes: array });
   };
   eachNote = (note, i) => {
     return (
-      <Note key={i} index={i} onChange={this.update} onRemove={this.remove}>
-        {note}
+      <Note
+        key={note.id}
+        index={i}
+        onChange={this.update}
+        onRemove={this.remove}
+      >
+        {note.note}
       </Note>
     );
   };

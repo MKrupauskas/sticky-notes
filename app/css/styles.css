@@ -3,53 +3,64 @@ html,
 div.board,
 div#root {
   height: 100%;
-  overflow: hidden; }
+  overflow: hidden;
+}
 
 body {
   margin: 0;
-  padding: 0; }
+  padding: 0;
+}
 
 div.note > textarea {
   height: 75%;
-  background: rgba(255, 255, 255, 0.5); }
+  background: rgba(255, 255, 255, 0.5);
+}
 
 div.board {
   width: 100%;
   background-color: #eab92d;
-  background: linear-gradient(to bottom right, #eab92d, #c79810); }
+  background: linear-gradient(to bottom right, #eab92d, #c79810);
+}
 
 div.note {
   height: 150px;
   width: 150px;
   background-color: yellow;
   margin: 2px 0;
-  position: relative;
+  position: absolute;
   cursor: grab;
   box-shadow: 5px 5px 15px 0 rgba(0, 0, 0, 0.2);
-  overflow: hidden; }
+  overflow: hidden;
+}
 
 div.note:active {
-  cursor: grabbing; }
+  cursor: grabbing;
+}
 
 div.note p {
   font-size: 22px;
   padding: 5px;
-  font-family: "Shadows Into Light", Arial; }
+  font-family: "Shadows Into Light", Arial;
+}
 
 div.note:hover > span {
-  opacity: 1; }
+  opacity: 1;
+}
 
 div.note > span {
   position: absolute;
   bottom: 2px;
   right: 2px;
   opacity: 0;
-  transition: opacity .25s linear; }
+  transition: opacity 0.25s linear;
+}
 
 div.note button {
-  margin: 2px; }
+  margin: 2px;
+}
 
 .glyphicon-plus {
   position: fixed;
   top: 10px;
-  right: 10px; }
+  right: 10px;
+}
