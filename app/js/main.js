@@ -2,6 +2,11 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 
 class Note extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { editing: false };
+  }
+
   componentWillMount() {
     this.style = {
       right: `${this.randomBetween(0, window.innerWidth - 150)} px`,
@@ -14,22 +19,18 @@ class Note extends Component {
     return min + Math.ceil(Math.random() * max);
   }
 
-  constructor(props) {
-    super(props);
-    this.state = { editing: false };
-  }
-
   edit = () => {
     this.setState({ editing: true });
   };
 
   save = () => {
-    // var value = this.refs.newText.getDOMNode().value;
-    // alert("save note value " + value);
+    this.props.onChange(this.refs.newText.getDOMNode().value, this.props.index);
     this.setState({ editing: false });
   };
 
-  remove = () => {};
+  remove = () => {
+    this.props.onRemove(this.props.index);
+  };
 
   renderDisplay() {
     return (
@@ -101,12 +102,7 @@ class Board extends Component {
   };
   eachNote = (note, i) => {
     return (
-      <Note
-        key={note.id}
-        index={i}
-        onChange={this.update}
-        onRemove={this.remove}
-      >
+      <Note key={i} index={i} onChange={this.update} onRemove={this.remove}>
         {note.note}
       </Note>
     );
@@ -116,4 +112,4 @@ class Board extends Component {
   }
 }
 
-ReactDOM.render(<Board />, document.getElementById("root"));
+ReactDOM.render(<Board count={10} />, document.getElementById("root"));
