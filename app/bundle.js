@@ -1867,7 +1867,7 @@ var Board = function (_Component2) {
       _this2.setState({ notes: array });
     };
 
-    _this2.remove = function () {
+    _this2.remove = function (i) {
       var array = _this2.state.notes;
       array.splice(i, 1);
       _this2.setState({ notes: array });
@@ -1895,7 +1895,7 @@ var Board = function (_Component2) {
     }
   }, {
     key: "add",
-    value: function add() {
+    value: function add(text) {
       var array = this.state.notes;
       array.push({
         id: this.nextId(),
@@ -1917,7 +1917,7 @@ var Board = function (_Component2) {
   return Board;
 }(__WEBPACK_IMPORTED_MODULE_5_react__["Component"]);
 
-__WEBPACK_IMPORTED_MODULE_6_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(Board, { count: 10 }), document.getElementById("root"));
+__WEBPACK_IMPORTED_MODULE_6_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(Board, null), document.getElementById("root"));
 
 /***/ }),
 /* 58 */
