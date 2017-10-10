@@ -82,7 +82,7 @@ class Board extends Component {
     this.uniqueId = this.uniqueId || 0;
     return this.uniqueId++;
   }
-  add() {
+  add(text) {
     let array = this.state.notes;
     array.push({
       id: this.nextId(),
@@ -95,7 +95,7 @@ class Board extends Component {
     array[i].note = newText;
     this.setState({ notes: array });
   };
-  remove = () => {
+  remove = (i) => {
     let array = this.state.notes;
     array.splice(i, 1);
     this.setState({ notes: array });
@@ -112,4 +112,4 @@ class Board extends Component {
   }
 }
 
-ReactDOM.render(<Board count={10} />, document.getElementById("root"));
+ReactDOM.render(<Board />, document.getElementById("root"));

@@ -1775,23 +1775,38 @@ var Note = function (_Component) {
     };
 
     _this.save = function () {
-      var value = _this.refs.newText.getDOMNode().value;
-      alert("save note value " + value);
+      _this.props.onChange(_this.refs.newText.getDOMNode().value, _this.props.index);
       _this.setState({ editing: false });
     };
 
-    _this.remove = function () {};
+    _this.remove = function () {
+      _this.props.onRemove(_this.props.index);
+    };
 
     _this.state = { editing: false };
     return _this;
   }
 
   __WEBPACK_IMPORTED_MODULE_2_babel_runtime_helpers_createClass___default()(Note, [{
+    key: "componentWillMount",
+    value: function componentWillMount() {
+      this.style = {
+        right: this.randomBetween(0, window.innerWidth - 150) + " px",
+        top: this.randomBetween(0, window.innerHeight - 150) + " px",
+        transform: "rotate(" + this.randomBetween(-15, 15) + "deg)"
+      };
+    }
+  }, {
+    key: "randomBetween",
+    value: function randomBetween(min, max) {
+      return min + Math.ceil(Math.random() * max);
+    }
+  }, {
     key: "renderDisplay",
     value: function renderDisplay() {
       return __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(
         "div",
-        { className: "note" },
+        { className: "note", style: this.style },
         __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(
           "p",
           null,
@@ -1816,7 +1831,7 @@ var Note = function (_Component) {
     value: function renderForm() {
       return __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(
         "div",
-        { className: "note" },
+        { className: "note", style: this.style },
         __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement("textarea", {
           ref: "newText",
           defaultValue: this.props.children,
@@ -1848,7 +1863,7 @@ var Board = function (_Component2) {
 
     _this2.update = function (newText, i) {
       var array = _this2.state.notes;
-      array[i] = newText;
+      array[i].note = newText;
       _this2.setState({ notes: array });
     };
 
@@ -1862,7 +1877,7 @@ var Board = function (_Component2) {
       return __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(
         Note,
         { key: i, index: i, onChange: _this2.update, onRemove: _this2.remove },
-        note
+        note.note
       );
     };
 
@@ -1873,6 +1888,22 @@ var Board = function (_Component2) {
   }
 
   __WEBPACK_IMPORTED_MODULE_2_babel_runtime_helpers_createClass___default()(Board, [{
+    key: "nextId",
+    value: function nextId() {
+      this.uniqueId = this.uniqueId || 0;
+      return this.uniqueId++;
+    }
+  }, {
+    key: "add",
+    value: function add() {
+      var array = this.state.notes;
+      array.push({
+        id: this.nextId(),
+        note: text
+      });
+      this.setState({ notes: array });
+    }
+  }, {
     key: "render",
     value: function render() {
       return __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(
@@ -1886,7 +1917,7 @@ var Board = function (_Component2) {
   return Board;
 }(__WEBPACK_IMPORTED_MODULE_5_react__["Component"]);
 
-__WEBPACK_IMPORTED_MODULE_6_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(Board, null), document.getElementById("root"));
+__WEBPACK_IMPORTED_MODULE_6_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(Board, { count: 10 }), document.getElementById("root"));
 
 /***/ }),
 /* 58 */
