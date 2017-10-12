@@ -24,7 +24,7 @@ class Note extends Component {
   };
 
   save = () => {
-    this.props.onChange(this.refs.newText.getDOMNode().value, this.props.index);
+    this.props.onChange(this.refs.newText.value, this.props.index);
     this.setState({ editing: false });
   };
 
