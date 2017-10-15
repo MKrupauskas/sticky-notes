@@ -5,20 +5,20 @@ class Note extends Component {
   constructor(props) {
     super(props);
     this.state = { editing: false };
-  }
-
-  componentWillMount() {
+    const right = `Math.random(0, window.innerWidth - 150)px`;
+    const top = this.randomBetween(0, window.innerHeight - 150) + " px";
     this.style = {
-      right: this.randomBetween(0, window.innerWidth - 150) + " px",
-      transform: `rotate(${this.randomBetween(-15, 15)}deg)`,
-      // right: `${this.randomBetween(0, window.innerWidth - 150)} px`,
-      top: this.randomBetween(0, window.innerHeight - 150) + " px"
+      right: `${this.randomBetween(0, -window.innerWidth - 150)}px`,
+      top: `${this.randomBetween(0, -window.innerHeight - 150)}px`,
+      transform: `rotate(${this.randomBetween(-15, 15)}deg)`
     };
   }
 
-  randomBetween(min, max) {
+  componentWillMount() {}
+
+  randomBetween = (min, max) => {
     return min + Math.ceil(Math.random() * max);
-  }
+  };
 
   edit = () => {
     this.setState({ editing: true });
@@ -35,7 +35,7 @@ class Note extends Component {
 
   renderDisplay() {
     return (
-      <div className="note" style={{ right: "-150px" }}>
+      <div className="note" style={this.style}>
         <p>{this.props.children}</p>
         <span>
           <button
