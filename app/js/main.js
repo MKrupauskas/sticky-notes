@@ -5,16 +5,15 @@ class Note extends Component {
   constructor(props) {
     super(props);
     this.state = { editing: false };
-    const right = `Math.random(0, window.innerWidth - 150)px`;
-    const top = this.randomBetween(0, window.innerHeight - 150) + " px";
+  }
+
+  componentWillMount() {
     this.style = {
-      right: `${this.randomBetween(0, -window.innerWidth - 150)}px`,
-      top: `${this.randomBetween(0, -window.innerHeight - 150)}px`,
+      right: `${this.randomBetween(0, window.innerWidth - 150)}px`,
+      top: `${this.randomBetween(0, window.innerHeight - 150)}px`,
       transform: `rotate(${this.randomBetween(-15, 15)}deg)`
     };
   }
-
-  componentWillMount() {}
 
   randomBetween = (min, max) => {
     return min + Math.ceil(Math.random() * max);
