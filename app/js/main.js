@@ -92,10 +92,10 @@ class Board extends Component {
   }
   update = (newText, i) => {
     let array = this.state.notes;
-    array[i].note = newText;
+    array[i] = newText;
     this.setState({ notes: array });
   };
-  remove = (i) => {
+  remove = i => {
     let array = this.state.notes;
     array.splice(i, 1);
     this.setState({ notes: array });
