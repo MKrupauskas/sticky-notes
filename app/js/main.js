@@ -9,9 +9,10 @@ class Note extends Component {
 
   componentWillMount() {
     this.style = {
-      right: `${this.randomBetween(0, window.innerWidth - 150)} px`,
-      top: `${this.randomBetween(0, window.innerHeight - 150)} px`,
-      transform: `rotate(${this.randomBetween(-15, 15)}deg)`
+      right: this.randomBetween(0, window.innerWidth - 150) + " px",
+      transform: `rotate(${this.randomBetween(-15, 15)}deg)`,
+      // right: `${this.randomBetween(0, window.innerWidth - 150)} px`,
+      top: this.randomBetween(0, window.innerHeight - 150) + " px"
     };
   }
 
@@ -34,7 +35,7 @@ class Note extends Component {
 
   renderDisplay() {
     return (
-      <div className="note" style={this.style}>
+      <div className="note" style={{ right: "-150px" }}>
         <p>{this.props.children}</p>
         <span>
           <button
@@ -75,24 +76,24 @@ class Board extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      notes: ["Call Bill", "Email Lisa", "Finish Project"]
+      notes: []
     };
   }
   nextId() {
     this.uniqueId = this.uniqueId || 0;
     return this.uniqueId++;
   }
-  add(text) {
+  add = text => {
     let array = this.state.notes;
     array.push({
       id: this.nextId(),
       note: text
     });
     this.setState({ notes: array });
-  }
+  };
   update = (newText, i) => {
     let array = this.state.notes;
-    array[i] = newText;
+    array[i].note = newText;
     this.setState({ notes: array });
   };
   remove = i => {
@@ -102,13 +103,26 @@ class Board extends Component {
   };
   eachNote = (note, i) => {
     return (
-      <Note key={i} index={i} onChange={this.update} onRemove={this.remove}>
-        {note}
+      <Note
+        key={note.id}
+        index={i}
+        onChange={this.update}
+        onRemove={this.remove}
+      >
+        {note.note}
       </Note>
     );
   };
   render() {
-    return <div className="board">{this.state.notes.map(this.eachNote)}</div>;
+    return (
+      <div className="board">
+        {this.state.notes.map(this.eachNote)}
+        <button
+          className="btn btn-sm btn-success glyphicon glyphicon-plus"
+          onClick={this.add.bind(null, "New note")}
+        />
+      </div>
+    );
   }
 }
 
