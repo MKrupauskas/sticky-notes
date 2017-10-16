@@ -1770,12 +1770,16 @@ var Note = function (_Component) {
 
     var _this = __WEBPACK_IMPORTED_MODULE_3_babel_runtime_helpers_possibleConstructorReturn___default()(this, (Note.__proto__ || __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_get_prototype_of___default()(Note)).call(this, props));
 
+    _this.randomBetween = function (min, max) {
+      return min + Math.ceil(Math.random() * max);
+    };
+
     _this.edit = function () {
       _this.setState({ editing: true });
     };
 
     _this.save = function () {
-      _this.props.onChange(_this.refs.newText.getDOMNode().value, _this.props.index);
+      _this.props.onChange(_this.refs.newText.value, _this.props.index);
       _this.setState({ editing: false });
     };
 
@@ -1791,15 +1795,10 @@ var Note = function (_Component) {
     key: "componentWillMount",
     value: function componentWillMount() {
       this.style = {
-        right: this.randomBetween(0, window.innerWidth - 150) + " px",
-        top: this.randomBetween(0, window.innerHeight - 150) + " px",
+        right: this.randomBetween(0, window.innerWidth - 150) + "px",
+        top: this.randomBetween(0, window.innerHeight - 150) + "px",
         transform: "rotate(" + this.randomBetween(-15, 15) + "deg)"
       };
-    }
-  }, {
-    key: "randomBetween",
-    value: function randomBetween(min, max) {
-      return min + Math.ceil(Math.random() * max);
     }
   }, {
     key: "renderDisplay",
@@ -1861,6 +1860,15 @@ var Board = function (_Component2) {
 
     var _this2 = __WEBPACK_IMPORTED_MODULE_3_babel_runtime_helpers_possibleConstructorReturn___default()(this, (Board.__proto__ || __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_get_prototype_of___default()(Board)).call(this, props));
 
+    _this2.add = function (text) {
+      var array = _this2.state.notes;
+      array.push({
+        id: _this2.nextId(),
+        note: text
+      });
+      _this2.setState({ notes: array });
+    };
+
     _this2.update = function (newText, i) {
       var array = _this2.state.notes;
       array[i].note = newText;
@@ -1876,13 +1884,18 @@ var Board = function (_Component2) {
     _this2.eachNote = function (note, i) {
       return __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(
         Note,
-        { key: i, index: i, onChange: _this2.update, onRemove: _this2.remove },
+        {
+          key: note.id,
+          index: i,
+          onChange: _this2.update,
+          onRemove: _this2.remove
+        },
         note.note
       );
     };
 
     _this2.state = {
-      notes: ["Call Bill", "Email Lisa", "Finish Project"]
+      notes: []
     };
     return _this2;
   }
@@ -1894,22 +1907,16 @@ var Board = function (_Component2) {
       return this.uniqueId++;
     }
   }, {
-    key: "add",
-    value: function add(text) {
-      var array = this.state.notes;
-      array.push({
-        id: this.nextId(),
-        note: text
-      });
-      this.setState({ notes: array });
-    }
-  }, {
     key: "render",
     value: function render() {
       return __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(
         "div",
         { className: "board" },
-        this.state.notes.map(this.eachNote)
+        this.state.notes.map(this.eachNote),
+        __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement("button", {
+          className: "btn btn-sm btn-success glyphicon glyphicon-plus",
+          onClick: this.add.bind(null, "New note")
+        })
       );
     }
   }]);
