@@ -54,6 +54,7 @@ class Note extends Component {
     return (
       <div className="note" style={this.style}>
         <textarea
+          autoFocus
           ref="newText"
           defaultValue={this.props.children}
           className="form-control"
