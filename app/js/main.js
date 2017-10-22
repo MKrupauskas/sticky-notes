@@ -147,4 +147,4 @@ class Board extends Component {
   }
 }
 
-ReactDOM.render(<Board count={50} />, document.getElementById("root"));
+ReactDOM.render(<Board count={25} />, document.getElementById("root"));
