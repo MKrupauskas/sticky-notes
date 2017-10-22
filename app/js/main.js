@@ -95,6 +95,23 @@ class Board extends Component {
     });
     this.setState({ notes: array });
   };
+
+  componentWillMount() {
+    const self = this;
+    if (this.props.count) {
+      $.getJSON(
+        "http://baconipsum.com/api/?type=all-meat&sentences=" +
+          this.props.count +
+          "&start-with-lorem=1&callback=?",
+        results => {
+          results[0]
+            .split(". ")
+            .forEach(sentence => self.add(sentence.substring(0, 40)));
+        }
+      );
+    }
+  }
+
   update = (newText, i) => {
     let array = this.state.notes;
     array[i].note = newText;
@@ -130,4 +147,4 @@ class Board extends Component {
   }
 }
 
-ReactDOM.render(<Board />, document.getElementById("root"));
+ReactDOM.render(<Board count={50} />, document.getElementById("root"));
