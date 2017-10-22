@@ -15,6 +15,10 @@ class Note extends Component {
     };
   }
 
+  componentDidMount() {
+    $(this.refs.note).draggable();
+  }
+
   randomBetween = (min, max) => {
     return min + Math.ceil(Math.random() * max);
   };
@@ -34,7 +38,7 @@ class Note extends Component {
 
   renderDisplay() {
     return (
-      <div className="note" style={this.style}>
+      <div className="note" ref="note" style={this.style}>
         <p>{this.props.children}</p>
         <span>
           <button
