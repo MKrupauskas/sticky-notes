@@ -1917,7 +1917,9 @@ var Board = function (_Component2) {
     value: function componentWillMount() {
       var self = this;
       if (this.props.count) {
-        $.getJSON("http://baconipsum.com/api/?type=all-meat&sentences=" + this.props.count + "&start-with-lorem=1&callback=?", function (results) {
+        $.getJSON(
+        // "https://baconipsum.com/api/?callback=?",
+        "https://baconipsum.com/api/?type=all-meat&sentences=" + this.props.count + "&start-with-lorem=1&callback=?", function (results) {
           results[0].split(". ").forEach(function (sentence) {
             return self.add(sentence.substring(0, 40));
           });

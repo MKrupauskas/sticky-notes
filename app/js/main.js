@@ -100,6 +100,7 @@ class Board extends Component {
     const self = this;
     if (this.props.count) {
       $.getJSON(
+        // "https://baconipsum.com/api/?callback=?",
         "https://baconipsum.com/api/?type=all-meat&sentences=" +
           this.props.count +
           "&start-with-lorem=1&callback=?",
