@@ -1801,11 +1801,16 @@ var Note = function (_Component) {
       };
     }
   }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      $(this.refs.note).draggable();
+    }
+  }, {
     key: "renderDisplay",
     value: function renderDisplay() {
       return __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(
         "div",
-        { className: "note", style: this.style },
+        { className: "note", ref: "note", style: this.style },
         __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(
           "p",
           null,
@@ -1832,6 +1837,7 @@ var Note = function (_Component) {
         "div",
         { className: "note", style: this.style },
         __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement("textarea", {
+          autoFocus: true,
           ref: "newText",
           defaultValue: this.props.children,
           className: "form-control"
@@ -1907,6 +1913,18 @@ var Board = function (_Component2) {
       return this.uniqueId++;
     }
   }, {
+    key: "componentWillMount",
+    value: function componentWillMount() {
+      var self = this;
+      if (this.props.count) {
+        $.getJSON("http://baconipsum.com/api/?type=all-meat&sentences=" + this.props.count + "&start-with-lorem=1&callback=?", function (results) {
+          results[0].split(". ").forEach(function (sentence) {
+            return self.add(sentence.substring(0, 40));
+          });
+        });
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
       return __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(
@@ -1924,7 +1942,7 @@ var Board = function (_Component2) {
   return Board;
 }(__WEBPACK_IMPORTED_MODULE_5_react__["Component"]);
 
-__WEBPACK_IMPORTED_MODULE_6_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(Board, null), document.getElementById("root"));
+__WEBPACK_IMPORTED_MODULE_6_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(Board, { count: 25 }), document.getElementById("root"));
 
 /***/ }),
 /* 58 */
