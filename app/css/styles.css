@@ -10,7 +10,7 @@ div.board {
 }
 
 div.board {
-  background: radial-gradient(#eab92d 45%, #c79810 99%);
+  background: radial-gradient(#eab92d 31%, #c79810 99%, #c79819 99%);
 }
 
 div.note {
