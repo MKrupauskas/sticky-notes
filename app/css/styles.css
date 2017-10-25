@@ -10,7 +10,7 @@ div.board {
 }
 
 div.board {
-  background: radial-gradient(#eab92d 31%, #c79810 99%, #c79819 99%);
+  background: radial-gradient(#eab92d 31%, #c79810 55%, #c79819 99%);
 }
 
 div.note {
@@ -21,6 +21,7 @@ div.note {
   position: absolute;
   cursor: -webkit-grab;
   box-shadow: 5px 5px 15px 0 rgba(0, 0, 0, 0.2);
+  overflow: hidden;
 }
 div.note:active {
   cursor: -webkit-grabbing;
