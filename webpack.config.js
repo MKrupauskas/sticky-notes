@@ -1,9 +1,15 @@
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+
 module.exports = options => {
   return {
-    entry: "./app/javascript/index.js",
+    // entry: "./app/javascript/index.js",
+    entry: ["./app/javascript/index.js", "./app/styles/styles.scss"],
     output: {
-      // path: "./",
-      filename: "app/bundle.js"
+      filename: "app/dist/bundle.js"
+    },
+    externals: {
+      react: "React",
+      "react-dom": "ReactDOM"
     },
     module: {
       rules: [
@@ -20,17 +26,18 @@ module.exports = options => {
           ]
         },
         {
-          test: /\.css$/,
-          use: ["style-loader", "css-loader"]
-        },
-        {
           test: /\.scss$/,
-          use: ["style-loader", "css-loader", "sass-loader"]
+          use: ExtractTextPlugin.extract({
+            fallback: "style-loader",
+            //resolve-url-loader may be chained before sass-loader if necessary
+            use: ["css-loader", "sass-loader"]
+          })
         }
       ]
     },
     resolve: {
       extensions: [".js", ".jsx"]
-    }
+    },
+    plugins: [new ExtractTextPlugin("app/dist/styles.css")]
   };
 };
