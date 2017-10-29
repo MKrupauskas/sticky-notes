@@ -1,13 +1,14 @@
 module.exports = options => {
   return {
-    entry: "./app/js/main.js",
+    entry: "./app/js/index.js",
     output: {
+      // path: "./",
       filename: "app/bundle.js"
     },
     module: {
       rules: [
         {
-          test: /.js$/,
+          test: /\.jsx?$/,
           exclude: /node_modules/,
           use: [
             {
@@ -19,6 +20,9 @@ module.exports = options => {
           ]
         }
       ]
+    },
+    resolve: {
+      extensions: [".js", ".jsx"]
     }
   };
 };
