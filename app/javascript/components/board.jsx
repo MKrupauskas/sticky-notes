@@ -28,8 +28,8 @@ export default class Board extends Component {
     if (this.props.count) {
       $.getJSON(
         "https://baconipsum.com/api/?type=all-meat&sentences=" +
-          this.props.count +
-          "&start-with-lorem=1&callback=?",
+        this.props.count +
+        "&start-with-lorem=1&callback=?",
         results => {
           results[0]
             .split(". ")
