@@ -7,10 +7,6 @@ module.exports = options => {
     output: {
       filename: "app/dist/bundle.js"
     },
-    externals: {
-      react: "React",
-      "react-dom": "ReactDOM"
-    },
     module: {
       rules: [
         {
@@ -29,7 +25,6 @@ module.exports = options => {
           test: /\.scss$/,
           use: ExtractTextPlugin.extract({
             fallback: "style-loader",
-            //resolve-url-loader may be chained before sass-loader if necessary
             use: ["css-loader", "sass-loader"]
           })
         }
