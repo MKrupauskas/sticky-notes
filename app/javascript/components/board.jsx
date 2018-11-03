@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import Note from "./note.jsx";
+import React, { Component } from 'react';
+import Note from './note.jsx';
 
 export default class Board extends Component {
   constructor(props) {
@@ -11,28 +11,31 @@ export default class Board extends Component {
 
   nextId() {
     this.uniqueId = this.uniqueId || 0;
+
     return this.uniqueId++;
   }
 
-  add = text => {
+  add(text) {
     let array = this.state.notes;
+
     array.push({
       id: this.nextId(),
       note: text
     });
     this.setState({ notes: array });
-  };
+  }
 
   componentWillMount() {
     const self = this;
+
     if (this.props.count) {
       $.getJSON(
-        "https://baconipsum.com/api/?type=all-meat&sentences=" +
+        'https://baconipsum.com/api/?type=all-meat&sentences=' +
         this.props.count +
-        "&start-with-lorem=1&callback=?",
+        '&start-with-lorem=1&callback=?',
         results => {
           results[0]
-            .split(". ")
+            .split('. ')
             .forEach(sentence => self.add(sentence.substring(0, 40)));
         }
       );
@@ -70,7 +73,7 @@ export default class Board extends Component {
         {this.state.notes.map(this.eachNote)}
         <button
           className="btn btn-sm btn-success glyphicon glyphicon-plus"
-          onClick={this.add.bind(null, "New note")}
+          onClick={this.add.bind(null, 'New note')}
         />
       </div>
     );
