@@ -1,4 +1,4 @@
-# Sticky Notes Application [*LIVE*](https://mkrupauskas.github.io/Sticky-Notes-App/app/)
+# Sticky Notes Application [*LIVE*](https://mkrupauskas.github.io/sticky-notes/app/)
 
 [![volkswagen status](https://auchenberg.github.io/volkswagen/volkswargen_ci.svg?v=1)](https://github.com/auchenberg/volkswagen)
 
