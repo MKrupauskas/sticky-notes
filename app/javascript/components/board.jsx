@@ -7,6 +7,9 @@ export default class Board extends Component {
     this.state = {
       notes: []
     };
+
+    this.nextId = this.nextId.bind(this);
+    this.add = this.add.bind(this);
   }
 
   nextId() {

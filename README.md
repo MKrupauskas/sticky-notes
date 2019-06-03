@@ -4,3 +4,11 @@
 
 A single-page web application for taking small notes. Inspiration from the default windows sticky notes app. Made with React.
 :cool:
+
+### Building and developing
+
+Fork project run `npm i` in the root of the project.
+
+To fire up the development environment run `npm run dev`.
+
+To generate production assets run `npm build`.
